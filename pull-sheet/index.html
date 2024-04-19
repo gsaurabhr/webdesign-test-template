@@ -3,6 +3,32 @@ layout: default
 title: Update Spreadsheet
 ---
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab Members</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>Lab Members</h1>
+  <div id="filter-container">
+    <label for="position-filter">Filter by Position:</label>
+    <select id="position-filter">
+      <option value="all">All Positions</option>
+      <option value="PhD">PhD</option>
+      <option value="MS(R)">MS(R)</option>
+      <option value="UG">UG</option>
+    </select>
+  </div>
+  <div id="member-grid"></div>
+</body>
+</html>
+
+
+
 <!--These are JavaScript Libraries-->
 <!-- <script type="text/javascript" src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script> -->
 
@@ -15,7 +41,7 @@ title: Update Spreadsheet
 
     // dict of all published sheets and corresponding resource names
     var $resources = {
-        team: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR9Bopp7wygWjBmMaN8_hc4tytmtRc88Dehu1W9B-pjetK_LRcTahB7tRpSPY-tKeAK5w93TC-DKElE/pub?gid=253503174&single=true&output=tsv'
+        team: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTDc-xCtQa-8VIz8vEadK586mt8ubmp_DsIPi5t0Cx1rbQkqOON0R-0jdzPLDL5bW9nOgvnu0JYruDo/pub?output=tsv'
     }
 
     var header_maps = {
