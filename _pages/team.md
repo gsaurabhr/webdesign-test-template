@@ -5,7 +5,7 @@ sitemap: false
 permalink: /test/
 ---
 
-# Group Members  
+# Group
 
 {% assign ap_members = '' | split: '' %}
 {% assign us_members = '' | split: '' %}
