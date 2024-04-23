@@ -98,3 +98,7 @@ permalink: /test/
 
 {% endif %}
 {% endfor %}
+
+<script>
+  console.log('Hello World')
+</script>
