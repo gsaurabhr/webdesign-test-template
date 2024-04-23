@@ -9,10 +9,12 @@ permalink: /test/
 
 # Group Members
 
-<ul style="display: flex;">
+<ul style="display: flex;list-style-type: none;margin: 2rem; padding: 0.5rem; border-radius: 1rem">
   <li><button>Phd</button></li>
-  <li><button>MSR</button></li>
+  <li><button>MS(R)</button></li>
   <li><button>MSc</button></li>
+  <li><button>Research Assistant</button></li>
+  <li><button>Undergrad</button></li>
 </ul>
 
 {% assign ap_members = '' | split: '' %}
