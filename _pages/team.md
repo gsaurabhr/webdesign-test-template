@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "test page"
 layout: gridlay
 sitemap: false
@@ -112,4 +112,83 @@ permalink: /test/
 
 <script>
   console.log('Hello World')
+
+</script> -->
+
+---
+title: "test page"
+layout: gridlay
+sitemap: false
+permalink: /test/
+---
+
+<!-- Group Members Filter -->
+<ul id="filter-options" style="display: flex; list-style-type: none; padding: 0;">
+  <li><button class="filter-button" data-position="Assistant Professor">Assistant Professor</button></li>
+  <li><button class="filter-button" data-position="PhD student">PhD Student</button></li>
+  <li><button class="filter-button" data-position="MS(R) student">MS(R) Student</button></li>
+  <li><button class="filter-button" data-position="MSc student">MSc Student</button></li>
+  <li><button class="filter-button" data-position="Research Assistant">Research Assistant</button></li>
+  <li><button class="filter-button" data-position="Undergraduate student">Undergraduate Student</button></li>
+</ul>
+
+<!-- Group Members Section -->
+<div id="group-members">
+  {% assign sorted_members = site.data.team | sort: "year" %}
+  {% for member in sorted_members %}
+    <div class="member" data-position="{{ member.position }}" style="display: none;">
+      <div class="col-sm-6 clearfix">
+        <img src="{{ member.image }}" class="img-responsive" width="35%" style="float: left;" />
+        <h4>{{ member.name }}</h4>
+        <i>{{ member.position }}, {{ member.affiliation }} <br>email: {{ member.email }}</i>
+        <ul style="overflow: hidden;">
+          {% if member.bio1 != "" %}<li>{{ member.bio1 }}</li>{% endif %}
+          {% if member.bio2 != "" %}<li>{{ member.bio2 }}</li>{% endif %}
+          {% if member.bio3 != "" %}<li>{{ member.bio3 }}</li>{% endif %}
+          {% if member.bio4 != "" %}<li>{{ member.bio4 }}</li>{% endif %}
+        </ul>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<!-- JavaScript for Filtering -->
+<script>
+  // Function to filter members based on selected positions
+  function filterMembers() {
+    // Get all filter buttons
+    var filterButtons = document.querySelectorAll('.filter-button');
+    
+    // Get all member elements
+    var members = document.querySelectorAll('.member');
+    
+    // Iterate through each member element
+    members.forEach(function(member) {
+      // Hide all members
+      member.style.display = 'none';
+      
+      // Get the position of the member
+      var position = member.dataset.position;
+      
+      // Check if any filter button for this position is selected
+      var showMember = Array.from(filterButtons).some(function(button) {
+        return button.classList.contains('selected') && button.dataset.position === position;
+      });
+      
+      // If a filter button is selected for this position or no filters are selected, show the member
+      if (showMember) {
+        member.style.display = 'block';
+      }
+    });
+  }
+  
+  // Add event listeners to filter buttons
+  document.querySelectorAll('.filter-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+      // Toggle the 'selected' class to indicate whether the button is selected or not
+      this.classList.toggle('selected');
+      // Call the filterMembers function to update the display based on selected filters
+      filterMembers();
+    });
+  });
 </script>
