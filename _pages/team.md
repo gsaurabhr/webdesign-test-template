@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "test page"
 layout: gridlay
 sitemap: false
@@ -97,4 +97,102 @@ permalink: /test/
 
 
 {% endif %}
+{% endfor %} -->
+
+
+---
+title: "test page"
+layout: gridlay
+sitemap: false
+permalink: /test/
+---
+
+<script>
+  var selectedPositions = [];
+</script>
+
+## Filter by Position:
+<select id="positionFilter" multiple>
+  <option value="">All</option>
+  <option value="Assistant Professor">Assistant Professor</option>
+  <option value="PhD student">PhD Student</option>
+  </select>
+
+# Group Members
+
+{% assign sorted_members = site.data.team | sort: "year" %}
+
+<div id="memberList">
+  {% for member in sorted_members %}
+    {% if member.display == 1 and member.alumni == 0 %}
+
+      {% assign even_odd = loop.index0 | modulo: 2 %}
+
+      {% if even_odd == 0 %}
+      <div class="row">
+      {% endif %}
+
+      <div class="col-sm-6 clearfix" data-position="{{ member.position }}">
+        <img src="{{ member.image }}" class="img-responsive" width="35%" style="float: left" />
+        <h4>{{ member.name }}</h4>
+        <i>{{ member.position }}, {{ member.affiliation }} <br>email: {{ member.email }}</i>
+        <ul style="overflow: hidden">
+          {% if member.bio1 != "" %}
+            <li> {{ member.bio1 }} </li>
+          {% endif %}
+          {% if member.bio2 != "" %}
+            <li> {{ member.bio2 }} </li>
+          {% endif %}
+          </ul>
+      </div>
+
+      {% assign number_printed = loop.index0 | plus: 1 %}
+
+      {% if even_odd == 1 %}
+      </div>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign even_odd = loop.index0 | modulo: 2 %}
+  {% if even_odd == 1 %}
+  </div>
+  {% endif %}
+</div>
+
+## Alumni
+
+{% for member in sorted_members %}
+{% if member.display == 1 and member.alumni == 1 %}
+
+<div class="col-sm-12 clearfix">
+  <img src="{{ member.image }}" class="img-thumbnail" width="100px" style="float: left" />
+  <h4>{{ member.name }}</h4>
+  <i>{{ member.position }}, {{ member.affiliation }} ({{ member.year }}) <br>email: {{ member.email }}</i>
+  <h5>{{ member.alumni_current }}</h5>
+</div>
+
+
+{% endif %}
 {% endfor %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const positionFilter = document.getElementById("positionFilter");
+    const memberList = document.getElementById("memberList");
+
+    positionFilter.addEventListener("change", function() {
+      selectedPositions = Array.from(positionFilter.selectedOptions).map(option => option.value);
+      filterMembers(memberList);
+    });
+
+    function filterMembers(memberList) {
+      const memberCards = memberList.querySelectorAll(".col-sm-6");
+      for (const memberCard of memberCards) {
+        const memberPosition = memberCard.dataset.position;
+        memberCard.style.display = selectedPositions.length === 0 || selectedPositions.includes(memberPosition) ? "" : "none";
+      }
+    }
+  });
+</script>
+
