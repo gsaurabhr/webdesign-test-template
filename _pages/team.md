@@ -9,7 +9,7 @@ permalink: /test/
 
 # Group Members
 
-<ul style="display: flex;list-style-type: none; padding: 0px">
+<ul style="display: flex;list-style-type: none; padding:">
   <li><button>Assistant Professor</button></li>
   <li><button>Phd Student</button></li>
   <li><button>MS(R) Student</button></li>
