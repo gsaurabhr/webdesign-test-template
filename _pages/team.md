@@ -10,36 +10,12 @@ permalink: /test/
 # Group Members
 
 <ul style="display: flex;list-style-type: none;">
-  <li><button style="
-    padding: 0px 8px;
-    margin: 2px;
-    border-radius: 8px;
-">Assistant Professor</button></li>
-  <li><button style="
-    padding: 0px 8px;
-    margin: 2px;
-    border-radius: 8px;
-">Phd Student</button></li>
-  <li><button style="
-    padding: 0px 8px;
-    margin: 2px;
-    border-radius: 8px;
-">MS(R) Student</button></li>
-  <li><button style="
-    padding: 0px 8px;
-    margin: 2px;
-    border-radius: 8px;
-">MSc Student</button></li>
-  <li><button style="
-    padding: 0px 8px;
-    margin: 2px;
-    border-radius: 8px;
-">Research Assistant</button></li>
-  <li><button style="
-    padding: 0px 8px;
-    margin: 2px;
-    border-radius: 8px;
-">Undergraduate Student</button></li>
+  <li><button>Assistant Professor</button></li>
+  <li><button>Phd Student</button></li>
+  <li><button>MS(R) Student</button></li>
+  <li><button>MSc Student</button></li>
+  <li><button>Research Assistant</button></li>
+  <li><button>Undergraduate Student</button></li>
 </ul>
 
 {% assign ap_members = '' | split: '' %}
