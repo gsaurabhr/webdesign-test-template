@@ -11,34 +11,34 @@ permalink: /test/
 
 <ul style="display: flex;list-style-type: none;">
   <li><button style="
-    padding: 8px 32px;
-    margin: 8px;
-    border-radius: 10px;
+    padding: 4px 16px;
+    margin: 4px;
+    border-radius: 8px;
 ">Assistant Professor</button></li>
   <li><button style="
-    padding: 8px 32px;
-    margin: 8px;
-    border-radius: 10px;
+    padding: 4px 16px;
+    margin: 4px;
+    border-radius: 8px;
 ">Phd Student</button></li>
   <li><button style="
-    padding: 8px 32px;
-    margin: 8px;
-    border-radius: 10px;
+    padding: 4px 16px;
+    margin: 4px;
+    border-radius: 8px;
 ">MS(R) Student</button></li>
   <li><button style="
-    padding: 8px 32px;
-    margin: 8px;
-    border-radius: 10px;
+    padding: 4px 16px;
+    margin: 4px;
+    border-radius: 8px;
 ">MSc Student</button></li>
   <li><button style="
-    padding: 8px 32px;
-    margin: 8px;
-    border-radius: 10px;
+    padding: 4px 16px;
+    margin: 4px;
+    border-radius: 8px;
 ">Research Assistant</button></li>
   <li><button style="
-    padding: 8px 32px;
-    margin: 8px;
-    border-radius: 10px;
+    padding: 4px 16px;
+    margin: 4px;
+    border-radius: 8px;
 ">Undergraduate Student</button></li>
 </ul>
 
