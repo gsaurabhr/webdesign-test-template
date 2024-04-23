@@ -1,11 +1,11 @@
-<!-- ---
+---
 title: "test page"
 layout: gridlay
 sitemap: false
 permalink: /test/
 ---
 
-
+<!--
 
 # Group Members
 
@@ -115,13 +115,14 @@ permalink: /test/
 
 </script> -->
 
----
+<!-- ---
 title: "test page"
 layout: gridlay
 sitemap: false
 permalink: /test/
----
+--- -->
 
+# Group Members
 <!-- Group Members Filter -->
 <ul id="filter-options" style="display: flex; list-style-type: none; padding: 0;">
   <li><button class="filter-button" data-position="Assistant Professor">Assistant Professor</button></li>
