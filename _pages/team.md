@@ -1,11 +1,11 @@
----
+<!-- ---
 title: "test page"
 layout: gridlay
 sitemap: false
 permalink: /test/
 ---
 
-# Group
+# Group Members
 
 {% assign ap_members = '' | split: '' %}
 {% assign us_members = '' | split: '' %}
@@ -97,4 +97,100 @@ permalink: /test/
 
 
 {% endif %}
-{% endfor %}
+{% endfor %} -->
+
+
+---
+title: "test page"
+layout: gridlay
+sitemap: false
+permalink: /test/
+---
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const filterSelect = document.getElementById("position");
+    const members = document.querySelectorAll(".grid .col-sm-6");
+
+    filterSelect.addEventListener("change", function() {
+        const selectedPosition = filterSelect.value;
+
+        members.forEach(member => {
+            const position = member.querySelector(".position").textContent.trim();
+
+            if (selectedPosition === "all" || position === selectedPosition) {
+                member.style.display = "block";
+            } else {
+                member.style.display = "none";
+            }
+        });
+    });
+});
+</script>
+
+# Group Members
+
+<div class="filter">
+    <label for="position">Filter by Position:</label>
+    <select id="position">
+        <option value="all">All Positions</option>
+        <option value="Assistant Professor">Assistant Professor</option>
+        <option value="Undergraduate student">Undergraduate Student</option>
+        <option value="MS(R) student">MS(R) Student</option>
+        <option value="PhD student">PhD Student</option>
+        <option value="Research Assistant">Research Assistant</option>
+        <option value="Intern">Intern</option>
+        <!-- Add more options as needed -->
+    </select>
+</div>
+
+<div class="grid">
+    {% assign number_printed = 0 %}
+    {% for member in sorted_members %}
+        {% if member.display == 1 and member.alumni == 0 %}
+            {% assign even_odd = number_printed | modulo: 2 %}
+            {% if even_odd == 0 %}
+                <div class="row">
+            {% endif %}
+            <div class="col-sm-6 clearfix position-{{ member.position }}">
+                <img src="{{ member.image }}" class="img-responsive" width="35%" style="float: left" />
+                <h4>{{ member.name }}</h4>
+                <i class="position">{{ member.position }}, {{ member.affiliation }} <br>email: {{ member.email }}</i>
+                <ul style="overflow: hidden">
+                    {% if member.bio1 != "" %}
+                        <li> {{ member.bio1 }} </li>
+                    {% endif %}
+                    {% if member.bio2 != "" %}
+                        <li> {{ member.bio2 }} </li>
+                    {% endif %}
+                    {% if member.bio3 != "" %}
+                        <li> {{ member.bio3 }} </li>
+                    {% endif %}
+                    {% if member.bio4 != "" %}
+                        <li> {{ member.bio4 }} </li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% assign number_printed = number_printed | plus: 1 %}
+            {% if even_odd == 1 %}
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
+
+## Alumni
+
+<div class="grid">
+    {% for member in sorted_members %}
+        {% if member.display == 1 and member.alumni == 1 %}
+            <div class="col-sm-12 clearfix position-{{ member.position }}">
+                <img src="{{ member.image }}" class="img-thumbnail" width="100px" style="float: left" />
+                <h4>{{ member.name }}</h4>
+                <i>{{ member.position }}, {{ member.affiliation }} ({{ member.year }}) <br>email: {{ member.email }}</i>
+                <h5>{{ member.alumni_current }}</h5>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
