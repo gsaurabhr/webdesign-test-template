@@ -5,6 +5,12 @@ sitemap: false
 permalink: /test/
 ---
 
+<ul style="display: flex;">
+  <li><button>Phd</button></li>
+  <li><button>MSR</button></li>
+  <li><button>MSc</button></li>
+</ul>
+
 # Group Members
 
 {% assign ap_members = '' | split: '' %}
